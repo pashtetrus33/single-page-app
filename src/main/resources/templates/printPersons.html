@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html layout:decorate="layouts/defaultLayout" xmlns:layout="http://www.w3.org/1999/xhtml">
+
+<body>
+
+<div class="container-fluid" layout:fragment="content">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 style="margin-bottom: 20px; margin-top: 10px">
+                Persons description page.
+            </h3>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Height</th>
+                    <th>Weight</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="p : ${persons}">
+                    <td th:text="${p.id}"></td>
+                    <td th:text="${p.name}"></td>
+                    <td th:text="${p.age}"></td>
+                    <td th:text="${p.height}"></td>
+                    <td th:text="${p.weight}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html layout:decorate="layouts/defaultLayout" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>ADMIN page</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container mt-3 mb-3">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Height</th>
+                <th>Weight</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="person : ${persons}">
+                <td th:text="${person.id}"></td>
+                <td th:text="${person.name}"></td>
+                <td th:text="${person.age}"></td>
+                <td th:text="${person.height}"></td>
+                <td th:text="${person.weight}"></td>
+                <td> <form action="#" th:action="@{/persons/editForm/}" th:object="${person}" method="post">
+                    <input name="id" type="hidden" th:value="${person.id}">
+                    <input name="name" type="hidden" th:value="${person.name}">
+                    <input name="age" type="hidden" th:value="${person.age}">
+                    <input name="height" type="hidden" th:value="${person.height}">
+                    <input name="weight" type="hidden" th:value="${person.weight}">
+                    <button type="submit" class="btn btn-primary" name="editItem">Edit</button>
+                </form>
+                </td>
+                <td> <form action="#" th:action="@{/persons/delete/}" th:object="${person}" method="post">
+                    <input name="id" type="hidden" th:value="${person.id}">
+                    <input name="name" type="hidden" th:value="${person.name}">
+                    <input name="age" type="hidden" th:value="${person.age}">
+                    <input name="height" type="hidden" th:value="${person.height}">
+                    <input name="weight" type="hidden" th:value="${person.weight}">
+                    <button type="submit" class="btn btn-danger" name="deleteItem">Delete</button>
+                </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

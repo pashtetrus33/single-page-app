@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html layout:decorate="layouts/defaultLayout" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new person form</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container mt-3 mb-3">
+        <form th:action="@{/persons/add}" action="#" method="post" th:object="${person} ">
+
+            <input hidden="hidden" th:field="*{id}" type="text" class="form-control" id="personId">
+
+            <div class="form-group mb-3">
+                <label for="personNameInput">Name</label>
+                <input th:field="*{name}" type="text" class="form-control" id="personNameInput"
+                       aria-describedby="nameHelp"
+                       placeholder="Enter person name">
+            </div>
+            <div class="form-group mb-3">
+                <label for="personAgeInput">Age</label>
+                <input th:field="*{age}" type="text" class="form-control" id="personAgeInput" aria-describedby="ageHelp"
+                       placeholder="Enter person age">
+            </div>
+            <div class="form-group mb-3">
+                <label for="personHeightInput">Height</label>
+                <input th:field="*{height}" type="text" class="form-control" id="personHeightInput"
+                       aria-describedby="heightHelp"
+                       placeholder="Enter person height">
+            </div>
+            <div class="form-group mb-3">
+                <label for="personWeightInput">Weight</label>
+                <input th:field="*{weight}" type="text" class="form-control" id="personWeightInput"
+                       aria-describedby="weightHelp"
+                       placeholder="Enter person weight">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

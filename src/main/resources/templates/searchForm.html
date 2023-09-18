@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html layout:decorate="layouts/defaultLayout" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Person search form</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container mt-3 mb-3">
+        <form th:action="@{/persons/search}" action="#" method="post" th:object="${searchModel} ">
+
+            <div class="form-group mb-3">
+                <label for="searchTermInput">Search for person name</label>
+                <input th:field="*{searchTerm}" type="text" class="form-control" id="searchTermInput"
+                       aria-describedby="searchTermHelp"
+                       placeholder="Enter search phrase or word.">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
