@@ -1,22 +1,19 @@
 package com.geekbrains.arcsoft.lesson7.spa.models;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+
+@Document("persons")
 public class Person {
 
     //region Private fields
-    private static long count;
-    private long id;
+    private String id;
     private String name;
     private int age;
     private int height;
     private float weight;
 
-    //endregion
-
-    //region Init
-    {
-        id = ++count;
-    }
-    //endregion
 
     //region Constructors
     public Person(String name, int age, int height, float weight) {
@@ -24,29 +21,21 @@ public class Person {
         this.age = age;
         this.height = height;
         this.weight = weight;
-        System.out.println("Person created with all arguments. Count = " + count + ". ID = " + id);
+        System.out.println("Person created with all arguments. ID = " + id);
     }
 
     public Person() {
-        System.out.println("Person created. Count = " + count + ". ID = " + id);
+        System.out.println("Person created. ID = " + id);
     }
     //endregion
 
     //region Getters and Setters
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public static long getCount() {
-        return count;
-    }
-
-    public static void setCount(int count) {
-        Person.count = count;
-    }
-
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -94,7 +83,6 @@ public class Person {
                 ", weight=" + weight +
                 '}';
     }
-
 
 
     //endregion

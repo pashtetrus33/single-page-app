@@ -9,9 +9,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PersonsService implements BusinessService<Person> {
+public class PersonsService implements BusinessService<Person, String> {
+
     @Autowired
-    PersistenceAccess personsDAO;
+    PersistenceAccess<Person, String> personsDAO;
 
 
     @Override
@@ -21,7 +22,7 @@ public class PersonsService implements BusinessService<Person> {
     }
 
     @Override
-    public Optional<Person> getById(long id) {
+    public Optional<Person> getById(String id) {
         return personsDAO.getById(id);
     }
 
@@ -31,17 +32,17 @@ public class PersonsService implements BusinessService<Person> {
     }
 
     @Override
-    public long add(Person newT) {
+    public String add(Person newT) {
         return personsDAO.add(newT);
     }
 
     @Override
-    public boolean delete(long id) {
+    public boolean delete(String id) {
         return personsDAO.delete(id);
     }
 
     @Override
-    public Person update(long idToUpdate, Person updatedPerson) {
+    public Person update(String idToUpdate, Person updatedPerson) {
         return personsDAO.update(idToUpdate, updatedPerson);
     }
 }

@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/persons")
 public class PersonsController {
 
-    BusinessService<Person> personsBusinessService;
+    BusinessService<Person, String> personsBusinessService;
 
-    PersonsController(BusinessService<Person> personsBusinessService) {
+    PersonsController(BusinessService<Person, String> personsBusinessService) {
         this.personsBusinessService = personsBusinessService;
     }
 
@@ -65,7 +65,7 @@ public class PersonsController {
     }
 
     @PostMapping("/doUpdate")
-    public String updatePerson(Person person, BindingResult bindingResult, Model model, Long id) {
+    public String updatePerson(Person person, BindingResult bindingResult, Model model, String id) {
         personsBusinessService.update(person.getId(), person);
         model.addAttribute("persons", personsBusinessService.getAll());
         return "personsAdmin";

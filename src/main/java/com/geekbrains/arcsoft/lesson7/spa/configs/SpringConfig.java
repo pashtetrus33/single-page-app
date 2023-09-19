@@ -11,7 +11,7 @@ import org.springframework.web.context.annotation.RequestScope;
 @Configuration
 public class SpringConfig {
     @Bean(name = "personsBusinessService")
-    public BusinessService<Person> getPersonsBusinessService() {
+    public BusinessService<Person, String> getPersonsBusinessService() {
         return new PersonsService();
     }
 }

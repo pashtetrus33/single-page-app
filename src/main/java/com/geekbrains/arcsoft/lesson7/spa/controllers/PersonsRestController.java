@@ -11,9 +11,9 @@ import java.util.Optional;
 @RequestMapping("/api/v1/persons")
 public class PersonsRestController {
 
-    BusinessService<Person> personsBusinessService;
+    BusinessService<Person, String> personsBusinessService;
 
-    PersonsRestController(BusinessService<Person> personsBusinessService) {
+    PersonsRestController(BusinessService<Person, String> personsBusinessService) {
         this.personsBusinessService = personsBusinessService;
     }
 
@@ -29,22 +29,22 @@ public class PersonsRestController {
     }
 
     @GetMapping(value = "/{id}")
-    public Optional<Person> getById(@PathVariable(name = "id") long id) {
+    public Optional<Person> getById(@PathVariable(name = "id") String id) {
         return personsBusinessService.getById(id);
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public boolean deleteById(@PathVariable(name = "id") long id) {
+    public boolean deleteById(@PathVariable(name = "id") String id) {
         return personsBusinessService.delete(id);
     }
 
     @PostMapping(value = "/")
-    public long addPerson(@RequestBody Person newPerson) {
+    public String addPerson(@RequestBody Person newPerson) {
         return personsBusinessService.add(newPerson);
     }
 
     @PutMapping(value = "/update/{id}")
-    public Person updateById(@RequestBody Person newPerson, @PathVariable(name = "id") long id) {
+    public Person updateById(@RequestBody Person newPerson, @PathVariable(name = "id") String id) {
         return personsBusinessService.update(id, newPerson);
     }
 }
